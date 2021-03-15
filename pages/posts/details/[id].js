@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_POST_BY_ID, DELETE_COMMENT, GET_POSTLIST } from "../queries";
+import { GET_POST_BY_ID, DELETE_COMMENT, GET_POSTLIST } from "../../../queries";
 import { Card, Spin, Table, Space, message, Button } from "antd";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import MainLayout from "../components/MainLayout";
-import AddComment from "./add-comment";
-import UpdateComment from "./update-comment";
+import MainLayout from "../../../components/MainLayout";
+import AddComment from "../../add-comment";
+import UpdateComment from "../../update-comment";
 
 const { Column } = Table;
 
@@ -54,8 +54,7 @@ const ViewPost = () => {
     onCompleted: (data) => {
       if (data) {
         message.success("Comment Deleted Successfully", 5);
-        router.push('/post-details/[id]', `/post-details/${id}`);
-        // router.push("/");
+        router.push('/posts/details/[id]', `/posts/details/${id}`);
       }
     },
     onError: (error) => {
@@ -94,9 +93,9 @@ const ViewPost = () => {
             </Button>
           </div>
 
-          {addCommentForm && <AddComment />}
+          {addCommentForm && <AddComment setAddComments={setAddComments}/>}
 
-          {updateCommentForm && <UpdateComment commentData={commentData}/>}
+          {updateCommentForm && <UpdateComment commentData={commentData} setUpdateComments={setUpdateComments}/>}
 
           <Table
             dataSource={singlePost?.comments}

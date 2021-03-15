@@ -1,6 +1,7 @@
 import Head from "next/head";
 import MainLayout from "../components/MainLayout";
-import PostList from "./list";
+import PostList from "./posts";
+// import PostList from "./list";
 
 const Index = () => (
   <div>
@@ -10,9 +11,9 @@ const Index = () => (
     </Head>
 
     <main>
-    <MainLayout>
-      <PostList />
-    </MainLayout>
+    {/* <MainLayout> */}
+      {/* <PostList /> */}
+    {/* </MainLayout> */}
     </main>
   </div>
 );

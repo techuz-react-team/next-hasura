@@ -6,11 +6,11 @@ import {
   UPDATE_POST,
   GET_USERLIST,
   GET_POSTLIST,
-} from "../queries";
+} from "../../../queries";
 import { Form, Input, Button, Select, Layout, message, Spin } from "antd";
 import PropTypes from "prop-types";
 import {  useRouter } from "next/router";
-import MainLayout from "../components/MainLayout";
+import MainLayout from "../../../components/MainLayout";
 
 const { Option } = Select;
 const { Content } = Layout;
@@ -95,12 +95,12 @@ const UpdatePost = () => {
     onCompleted: (data) => {
       if (data) {
         message.success("Post Updated Successfully", 5);
-        router.push("/");
+        router.push("/posts");
       }
     },
-    onError: (error) => {
-      message.error(error);
-    },
+    // onError: (error) => {
+    //   message.error(error);
+    // },
   });
 
   if (error) {

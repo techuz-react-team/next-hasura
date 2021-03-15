@@ -77,8 +77,8 @@ const UpdateComment = (props) => {
     onCompleted: (data) => {
       if (data) {
         message.success("Comment Updated Successfully", 5);
-        // router.push("/");
-        router.push('/post-details/[id]', `/post-details/${id}`);
+        router.push('/posts/details/[id]', `/posts/details/${id}`);
+        props.setUpdateComments(false)
       }
     },
     onError: (error) => {

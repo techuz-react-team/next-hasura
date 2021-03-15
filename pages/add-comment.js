@@ -33,7 +33,7 @@ const tailFormItemLayout = {
 /**
  * Function component for add Comment
  **/
-const AddComment = () => {
+const AddComment = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -61,12 +61,9 @@ const AddComment = () => {
     onCompleted: (data) => {
       if (data) {
         message.success("Comment added Successfully", 5);
-        router.push('/post-details/[id]', `/post-details/${id}`);
-
-        // router.push({
-        //   pathname: "/",
-        //   // query: { pid: id },
-        // });
+        router.push('/posts/details/[id]', `/posts/details/${id}`);
+        props.setAddComments(false)
+        
       }
     },
     onError: (error) => {

@@ -3,8 +3,10 @@ import { useMutation, useQuery } from "@apollo/client";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { Table, Space, Spin, Button, message } from "antd";
-import { GET_POSTLIST, DELETE_POST } from "../queries";
+import { GET_POSTLIST, DELETE_POST } from "../../queries";
 import { useRouter } from "next/router";
+import MainLayout from "../../components/MainLayout";
+
 const { Column } = Table;
 
 /**
@@ -24,7 +26,7 @@ const PostList = () => {
     onCompleted: (data) => {
       if (data) {
         message.success("Post Deleted Successfully", 5);
-        router.push("/");
+        router.push("/posts");
       }
     },
     onError: (error) => {
@@ -45,6 +47,7 @@ const PostList = () => {
   }
 
   return (
+      <MainLayout>
       <Spin spinning={loading} size="large" tip="Loading...">
         <Table dataSource={renderPostList} rowKey={(posts) => posts.id}>
           <Column title="Id" dataIndex="id" key="id" />
@@ -69,9 +72,8 @@ const PostList = () => {
             key="action"
             render={(text, record) => (
               <Space size="middle">
-                {/* <Link  href={`/post-details/`+ text.id }>View</Link> */}
-                <Link  as={`/post-details/${text.id}`} href={`/post-details?id=${text.id}`}>View</Link>
-                <Link  as={`/update-post/${text.id}`} href={`/update-post?id=${text.id}`}>Update</Link>
+                <Link href={`/posts/details/` + text.id} key={text.id}>View</Link>
+                <Link href={`/posts/update/` + text.id } key={text.id}>Update</Link>
                 <Button type="link" onClick={() => onDeletePost(text.id)}>
                   Delete
                 </Button>
@@ -80,6 +82,7 @@ const PostList = () => {
           />
         </Table>
       </Spin>
+      </MainLayout>
   );
 };
 

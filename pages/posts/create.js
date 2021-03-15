@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_POST, GET_POSTLIST, GET_USERLIST } from "../queries";
+import { CREATE_POST, GET_POSTLIST, GET_USERLIST } from "../../queries";
 import { Form, Input, Button, Select, Layout, message, Spin } from "antd";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
-import MainLayout from "../components/MainLayout";
+import MainLayout from "../../components/MainLayout";
 
 const { Option } = Select;
 const { Content } = Layout;
@@ -70,9 +70,7 @@ const CreatePost = () => {
       console.log("b", data);
       if (data) {
         message.success("Post Created Successfully", 5);
-        router.push({
-          pathname: "/",
-        });
+        router.push("/posts");
       }
     },
     onError: (error) => {
