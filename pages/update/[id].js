@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../../components/Layout'
 import Link from 'next/link'
 import { useRouter } from "next/router"
 import {useMemo} from 'react'
@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import Router from 'next/router'
 
-import {GET_ALL_USERS, UPDATE_POST, GEL_POST_DETAILS} from '../queries/Queries'
+import {GET_ALL_USERS, UPDATE_POST, GEL_POST_DETAILS} from '../../queries/Queries'
 
 const UpdatePost = () => {
     const router = useRouter()

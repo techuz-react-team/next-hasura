@@ -1,8 +1,8 @@
-import Layout from '../components/Layout'
+import Layout from '../../components/Layout'
 import { useRouter } from "next/router"
 import {useMemo, useState} from 'react';
 import {useQuery, useMutation} from "@apollo/react-hooks";
-import {GEL_POST_DETAILS, DELETE_COMMENT, ADD_COMMENT, UPDATE_COMMENT} from '../queries/Queries'
+import {GEL_POST_DETAILS, DELETE_COMMENT, ADD_COMMENT, UPDATE_COMMENT} from '../../queries/Queries'
 import PropTypes from 'prop-types';
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -80,6 +80,7 @@ const PostDetails = () => {
               .required("Required!"),
           }),
           onSubmit: (values, {resetForm}) => {
+              console.log('AAAA')
             if(commentAction === 'Add') {
                 saveComment({ variables: values }); // API call from here 
             } else {

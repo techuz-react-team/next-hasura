@@ -43,7 +43,7 @@ const Posts = () => {
                 return  <div key={i} className="well">
                 <div className="media">
                     <div className="media-body">
-                    <Link prefetch as={`/post-details/${post.id}`} href={`/post-details?id=${post.id}`}   >  
+                    <Link  href={`/details/${post.id}`}   >  
                        <a><h4 className="media-heading">{post?.title}</h4></a>  
                     </Link>
                     <p className="text-right"><b>By {post?.user?.name}</b></p>
@@ -55,7 +55,7 @@ const Posts = () => {
                
                 <div className="col-xs-1 col-md-1 float-right">
                     <button className="btn btn-danger " onClick={() => onDeletePost(post.id)} >Delete</button>
-                </div><Link prefetch as={`/update-post/${post.id}`} href={`/update-post?id=${post.id}`}  ><a className="btn btn-success ">Update</a></Link>
+                </div><Link  href={`/update/${post.id}`}  ><a className="btn btn-success ">Update</a></Link>
                 <div className="col-xs-1 col-md-1 float-right">
                     {/* <button className="btn btn-primary"  >Update</button> */}
                     
